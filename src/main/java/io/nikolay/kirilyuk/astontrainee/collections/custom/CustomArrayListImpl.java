@@ -97,12 +97,62 @@ public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
 
     @Override
     public void sort(Comparator<? super E> c) {
-        List<E> sortedList = Arrays.stream(values, 0, size)
-                .sorted(c)
-                .toList();
 
-        for (int i = 0; i < size; i++) {
-            values[i] = sortedList.get(i);
+        //Stream
+//        List<E> sortedList = Arrays.stream(values, 0, size)
+//                .sorted(c)
+//                .toList();
+//
+//        for (int i = 0; i < size; i++) {
+//            values[i] = sortedList.get(i);
+//        }
+
+        // MergeSort
+        mergeSort(values, 0, size - 1, c);
+    }
+
+    private void mergeSort(E[] array, int left, int right, Comparator<? super E> c) {
+        if (left < right) {
+            int middle = (left + right) / 2;
+            mergeSort(array, left, middle, c);
+            mergeSort(array, middle + 1, right, c);
+            merge(array, left, middle, right, c);
+        }
+    }
+
+    private void merge(E[] array, int left, int middle, int right, Comparator<? super E> c) {
+        int n1 = middle - left + 1;
+        int n2 = right - middle;
+
+        E[] leftArray = (E[]) new Object[n1];
+        E[] rightArray = (E[]) new Object[n2];
+
+        System.arraycopy(array, left, leftArray, 0, n1);
+        System.arraycopy(array, middle + 1, rightArray, 0, n2);
+
+        int i = 0, j = 0, k = left;
+
+        while (i < n1 && j < n2) {
+            if (c.compare(leftArray[i], rightArray[j]) <= 0) {
+                array[k] = leftArray[i];
+                i++;
+            } else {
+                array[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            array[k] = leftArray[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            array[k] = rightArray[j];
+            j++;
+            k++;
         }
     }
 
