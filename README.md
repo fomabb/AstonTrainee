@@ -79,7 +79,7 @@ public class Main {
 ___Console Response___
 
 - List after adding element at index 1: [1, 2, 3]
-- List after removing element 15: [1, 3, null]
+- List after removing element 2 : [1, 3, null]
 - List after adding collection: [25, 35, 40]
 - Element at index 2: 40
 - List after removing element at index 2: [25, 35, null]

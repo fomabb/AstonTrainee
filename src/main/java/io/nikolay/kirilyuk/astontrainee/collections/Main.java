@@ -18,7 +18,7 @@ public class Main {
 
         // Test remove(Object o)
         list.remove((Object) 2);
-        System.out.println("List after removing element 15: " + Arrays.toString(list.toArray()));
+        System.out.println("List after removing element 2: " + Arrays.toString(list.toArray()));
 
         list.clear();
 
