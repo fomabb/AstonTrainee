@@ -1,24 +1,3 @@
-# Custom Array List
-
-# Is written using the following technologies:
-
-- Spring Boot
-- Maven
-- spring-core
-
-### Short description of the project
-
-- HomeWork CustomArrayList
-
-### Prerequisites:
-
-- Java 17
-
-## Main Class
-
-___Test___
-
-```java
 package io.nikolay.kirilyuk.astontrainee.collections;
 
 import io.nikolay.kirilyuk.astontrainee.collections.custom.ICustomArrayList;
@@ -74,17 +53,3 @@ public class Main {
         System.out.println("List after sorting: " + Arrays.toString(list.toArray()));
     }
 }
-```
-
-___Console Response___
-
-- List after adding element at index 1: [1, 2, 3]
-- List after removing element 15: [1, 3, null]
-- List after adding collection: [25, 35, 40]
-- Element at index 2: 40
-- List after removing element at index 2: [25, 35, null]
-- List after updating element at index 1 to 50: [25, 50, null]
-- List after clear: []
-- Is list empty? true
-- List after adding elements: [5, 3, 8, 1, 2]
-- List after sorting: [1, 2, 3, 5, 8]
