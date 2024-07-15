@@ -19,17 +19,17 @@
 ___Test___
 
 ```java
-package io.nikolay.kirilyuk.astontrainee.collections;
+package io.nikolay.kirilyuk.astontrainee.collection;
 
-import io.nikolay.kirilyuk.astontrainee.collections.custom.ICustomArrayList;
-import io.nikolay.kirilyuk.astontrainee.collections.custom.CustomArrayListImpl;
+import io.nikolay.kirilyuk.astontrainee.collection.custom.CustomList;
+import io.nikolay.kirilyuk.astontrainee.collection.custom.CustomArrayListImpl;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
-        ICustomArrayList<Integer> list = new CustomArrayListImpl<>();
+        CustomList<Integer> list = new CustomArrayListImpl<>();
 
         // Test add(int index, E element)
         list.add(0, 1);

@@ -1,14 +1,18 @@
-package io.nikolay.kirilyuk.astontrainee.collections.custom;
+package io.nikolay.kirilyuk.astontrainee.collection.custom;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Iterator;
 
-public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
+public class CustomArrayListImpl<E> implements CustomList<E> {
 
     private E[] values;
     private int size;
+    private int DEFAULT_CAPACITY = 10;
 
     public CustomArrayListImpl() {
-        values = (E[]) new Object[10];
+        values = (E[]) new Object[DEFAULT_CAPACITY];
         size = 0;
     }
 
@@ -54,29 +58,35 @@ public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
     }
 
     @Override
-    public void remove(int index) {
-        try {
-            E[] temp = values;
-            values = (E[]) new Object[temp.length - 1];
-            System.arraycopy(temp, 0, values, 0, index);
-            System.arraycopy(temp, index + 1, values, index, temp.length - index - 1);
-        } catch (ClassCastException ex) {
-            ex.printStackTrace();
+    public E remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
         }
+        E oldValue = values[index];
+        int indexToRemove = size - index - 1;
+        if (indexToRemove > 0) {
+            System.arraycopy(values, index + 1, values, index, indexToRemove);
+        }
+        values[--size] = null;
+        return oldValue;
     }
 
     @Override
-    public void remove(Object o) {
+    public boolean remove(E object) {
         for (int i = 0; i < size; i++) {
-            if (values[i].equals(o)) {
+            if (values[i].equals(object)) {
                 remove(i);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     @Override
     public E get(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index out of bounds: " + index);
+        }
         return values[index];
     }
 
@@ -87,7 +97,7 @@ public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
 
     @Override
     public int size() {
-        return values.length;
+        return size;
     }
 
     @Override
@@ -98,7 +108,6 @@ public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
     @Override
     public void sort(Comparator<? super E> c) {
 
-        //Stream
 //        List<E> sortedList = Arrays.stream(values, 0, size)
 //                .sorted(c)
 //                .toList();
@@ -107,7 +116,6 @@ public class CustomArrayListImpl<E> implements ICustomArrayList<E> {
 //            values[i] = sortedList.get(i);
 //        }
 
-        // MergeSort
         mergeSort(values, 0, size - 1, c);
     }
 
