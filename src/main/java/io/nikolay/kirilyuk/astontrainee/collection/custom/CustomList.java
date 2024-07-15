@@ -1,15 +1,15 @@
-package io.nikolay.kirilyuk.astontrainee.collections.custom;
+package io.nikolay.kirilyuk.astontrainee.collection.custom;
 
 import java.util.Collection;
 import java.util.Comparator;
 
-public interface ICustomArrayList<E> extends Iterable<E> {
+public interface CustomList<E> extends Iterable<E> {
     boolean add(E e);
     void add(int index, E element);
     void addAll(Collection<? extends E> c);
     void clear();
-    void remove(int index);
-    void remove(Object o);
+    E remove(int index);
+    boolean remove(E object);
     E get(int index);
     boolean isEmpty();
     int size();

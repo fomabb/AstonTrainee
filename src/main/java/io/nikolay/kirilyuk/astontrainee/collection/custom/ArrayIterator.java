@@ -1,12 +1,13 @@
-package io.nikolay.kirilyuk.astontrainee.collections.custom;
+package io.nikolay.kirilyuk.astontrainee.collection.custom;
 
 import java.util.Iterator;
 
 public class ArrayIterator<E> implements Iterator<E> {
-    private int index = 0;
+    private int index;
     private final E[] values;
 
     ArrayIterator(E[] values) {
+        this.index = 0;
         this.values = values;
     }
 
