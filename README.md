@@ -88,3 +88,7 @@ ___Console Response___
 - Is list empty? true
 - List after adding elements: [5, 3, 8, 1, 2]
 - List after sorting: [1, 2, 3, 5, 8]
+
+___CustomArrayListTet___
+
+![TestPng.png](src%2Fmain%2Fresources%2Fimg%2FTestPng.png)
